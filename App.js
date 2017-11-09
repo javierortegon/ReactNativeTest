@@ -6,25 +6,14 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
+  AppRegistry,
   StyleSheet,
-  Text,
   View,
-  Image,
-  ScrollView,
-  FlatList,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import ArtistBox from './src/ArtistBox';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import ArtistList from './src/ArtistList'
 
 export default class App extends Component<{}> {
 
@@ -37,13 +26,11 @@ export default class App extends Component<{}> {
       numComments: 30
     }
 
+    const artists = Array(3).fill(artist)
     return (
-      <ScrollView style={styles.container}>
-        <FlatList
-          data={Array(5).fill(artist)}
-          renderItem={(artistList) => <ArtistBox artist={artist} />}
-        />
-      </ScrollView>
+      <View style={styles.container}>
+        <ArtistList artists={artists} />
+      </View>
     );
   }
 }
@@ -52,5 +39,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'lightgray',
+    paddingTop: 50,
   },
 });

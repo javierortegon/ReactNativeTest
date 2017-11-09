@@ -19,65 +19,65 @@ export default class ArtistBox extends Component<{}> {
 
   render() {
 
-    const { image, name, numLike, numComments} = this.props.artist
-
-    return (
-        <View style={styles.artistBox}>
-          <Image style={styles.image} source={{ uri: image }} />
-          <View style={styles.info}>
-            <Text style={styles.name}>{name}</Text>
-            <View style={styles.row}>
-              <View style={styles.iconContainer}>
-                <Icon name="ios-heart-outline" size={30} color="gray" />
-                <Text style={styles.count}>{numLike}</Text>
-              </View> 
-              <View style={styles.iconContainer}> 
-                <Icon name="ios-text-outline" size={30} color="gray" />
-                <Text style={styles.count}>{numComments}</Text>
-              </View>  
-            </View>  
-          </View> 
-        </View> 
-    );
+    const { image, name, likes, comments } = this.props.artist
+    
+        return (
+          <View style={styles.artistBox}>
+            <Image style={styles.image} source={{ uri: image }} />
+            <View style={styles.info}>
+              <Text style={styles.name}>{name}</Text>
+              <View style={styles.row}>
+                <View style={styles.iconContainer}>
+                  <Icon name="ios-heart-outline" size={30} color="gray" />
+                  <Text style={styles.count}>{likes}</Text>
+                </View>
+                <View style={styles.iconContainer}>
+                  <Icon name="ios-chatboxes-outline" size={30} color="gray" />
+                  <Text style={styles.count}>{comments}</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        );
   }
 }
 
 const styles = StyleSheet.create({
-  image: {
-    width: 150,
-    height: 150
-  },
   artistBox: {
-    backgroundColor : '#FFF',
-    flexDirection: 'row',
-    elevation: 4,
     margin: 5,
+    backgroundColor: 'white',
+    flexDirection: 'row',
     shadowColor: 'black',
     shadowOpacity: .2,
     shadowOffset: {
       height: 1,
       width: -2
     },
+    elevation: 2
+  },
+  image: {
+    width: 150,
+    height: 150,
   },
   info: {
     flex: 1,
-    alignItems: 'center',
     flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   name: {
     fontSize: 20,
-    paddingTop: 10,
-    color: '#000'
+    marginTop: 10,
+    color: '#333'
   },
   row: {
     flexDirection: 'row',
     marginHorizontal: 30,
+    marginTop: 15
   },
   iconContainer: {
-    flexDirection: 'column',
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   count: {
     color: 'gray'
